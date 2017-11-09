@@ -4,7 +4,7 @@ import java.util.HashMap;
 //import java.util.Scanner;
 
 /**
- * @author TODO: ±i¥©²[  B0344202
+ * @author TODO: å¼µå·§æ¶µ  B0344202
  * Try to write some comments for your codes (methods, 10 points)
  * get two cards and compare,if it's not the same,it will print "Well done!"
  */
