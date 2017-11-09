@@ -1,0 +1,75 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Deck {
+	
+	private ArrayList<Card> cards;
+	private ArrayList<Card> usedCard; //new fields to record used card in an ArrayList
+	public int nUsed; //new fields to record how many crads are using
+	
+	public Deck(int nDeck){
+		
+		cards=new ArrayList<Card>();
+		usedCard=new ArrayList<Card>();
+		
+		
+		for(int n=1;n<=nDeck;n++){	
+			for (Card.Suit s : Card.Suit.values()){ 
+			 for(int r=1;r<=13;r++){
+					 Card card=new Card(s,r);
+					 cards.add(card);						
+				  }
+			   }
+		 } 
+		shuffle();//Deck constructor calls the shuffle method at the end
+	}	
+	
+	public void printDeck(){
+		
+	    for(int i=0;i<cards.size();i++){
+	    	cards.get(i).printCard();
+	    }
+	}
+	public ArrayList<Card> getAllCards(){
+		return cards;
+	}
+	
+	//new method to shuffle the card's index
+	public void shuffle(){ 
+		
+		//use javaAPI to swap the index
+		//public static void swap(List<?> list,int i,int j)
+		for(int i = 0; i < cards.size(); i++) {
+            Collections.swap(cards, i, 
+                (int) (Math.random() * cards.size() - 1));
+        }
+		
+		usedCard=new ArrayList<Card>(); //reset "usedCard" 
+		nUsed=0; //reset "nUsed" 
+		
+	}
+	
+	//new method to get one card in  "cards" ,and  put it into "usedCard"
+	public Card getOneCard(){
+		
+		//if no card in "cards",shuffle()!
+		if(usedCard.size()>52){
+			shuffle();
+		}
+		
+		//get one card in "cards" until that was not in "usedCard",and then put it into "usedCard"
+		for(int i=0;i<cards.size();i++){
+			 if(usedCard.contains(cards.get(i))==false){
+				usedCard.add(cards.get(i));
+				break;
+			 }
+			}	
+		
+		nUsed=1;//after put the card, record the card in "nUsed"
+		
+		return usedCard.get(usedCard.size()-1);
+		
+	}
+	
+}
