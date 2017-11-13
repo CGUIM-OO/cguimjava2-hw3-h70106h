@@ -58,15 +58,8 @@ public class Deck {
 			shuffle();
 		}
 		
-		//get one card in "cards" until that was not in "usedCard",and then put it into "usedCard"
-		for(int i=0;i<cards.size();i++){
-			 if(usedCard.contains(cards.get(i))==false){
-				usedCard.add(cards.get(i));
-				break;
-			 }
-			}	
-		
-		nUsed=1;//after put the card, record the card in "nUsed"
+		usedCard.add(cards.get(nUsed));		
+		nUsed+=1;//after put the card, record the card in "nUsed"
 		
 		return usedCard.get(usedCard.size()-1);
 		
