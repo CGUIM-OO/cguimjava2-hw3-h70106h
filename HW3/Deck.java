@@ -54,7 +54,7 @@ public class Deck {
 	public Card getOneCard(){
 		
 		//if no card in "cards",shuffle()!
-		if(usedCard.size()>52){
+		if(usedCard.size()==cards.size()){
 			shuffle();
 		}
 		
